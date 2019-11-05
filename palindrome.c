@@ -21,6 +21,7 @@ int main()
         }
         
     }
+
     return 0;
 }
 
@@ -38,10 +39,13 @@ bool isPalindrome(__uint32_t num)
     {
         //divide num by power of 10 until not possible (number of digits in num)
         numSizeResult = num / numSize;
-        numSize *= 10;
+        if(numSizeResult != 0)
+        {
+            numSize *= 10;
+        }
     } while (numSizeResult != 0);
 
-    //numSize should be 1 power too  big at this point
+    //numSize should be 1 power too big at this point.
     numSize /= 10;
 
     int revResult = 0;
@@ -50,6 +54,7 @@ bool isPalindrome(__uint32_t num)
     {
         revResult = temp % 10;
         numReversal += (revResult * numSize);
+        temp /= 10;
         numSize /= 10;
     }
 
